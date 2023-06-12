@@ -27,7 +27,7 @@ export const View = () => {
                 <span>{task.task}</span>
                 <br/>
                 <br/>
-                <strong>ID: </strong>
+                <strong>Discription: </strong>
                 <span>{task.discription}</span>
                 <br/>
                 <br/>

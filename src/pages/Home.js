@@ -3,6 +3,8 @@ import{Link, useNavigate} from "react-router-dom";
 import "./Home.css";
 import{toast} from "react-toastify";
 import axios from "axios";
+import { FaRegEye, FaTrashAlt, FaPencilAlt} from "react-icons/fa";
+
 
 export const Home = () => {
 const[data, setData] = useState([]);
@@ -23,8 +25,6 @@ const deleteTask = (id) => {
         axios.delete(`http://localhost:5000/api/remove/${id}`);
         toast.success("task deleted Successfully!");
         setTimeout(() => {navigate("/"); loadData() }, 500)
-        // setTimeout(() => loadData(), 500);
-
     }
 }
 
@@ -39,9 +39,9 @@ const deleteTask = (id) => {
             <thead style={{display:'table'}}>
                 <tr className="header">
                    <th style={{textAlign:"center" }}>No.</th>
-                   <th style={{textAlign:"center"}}>Task</th>
+                   <th style={{textAlign:"center" }}>Task</th>
                    <th style={{textAlign:"center" }}>Discription</th>
-                   <th style={{textAlign:"center"}}>Action</th>
+                   <th style={{textAlign:"center" }}>Action</th>
                 </tr>
             </thead>
            
@@ -53,28 +53,25 @@ const deleteTask = (id) => {
                             <td>{item.task}</td>
                             <td>{item.discription}</td>
                             <td>
-                                <Link to={`/update/${item.id}`}>
-                                <button className="btn btn-edit">Edit</button>
+                                <Link to={`/view/${item.id}`}>
+                                <button className="btn btn-edit"><FaRegEye/> </button>
                                 </Link>
                                 <Link to={`/delete/${item.id}`}>
-                                <button className="btn btn-delete" onClick={() => deleteTask(item.id)}>Delete</button>
+                                <button className="btn btn-delete" onClick={() => deleteTask(item.id)}><FaTrashAlt/></button>
                                 </Link>
-                                <Link to={`/view/${item.id}`}>
-                                <button className="btn btn-view">View</button>
+                                <Link to={`/update/${item.id}`}>
+                                <button className="btn btn-view"><FaPencilAlt/></button>
                                 </Link>
-
                             </td>
                         </tr>
                        
                     )
                 })}
-                   
-            </tbody>
-         
+             </tbody>
         </table>
-        </div>   
-    </div>
-    </div>
+    </div>   
+   </div>
+ </div>
     
   )
 }
