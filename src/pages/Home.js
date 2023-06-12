@@ -61,7 +61,7 @@ const deleteTask = (id) => {
                                 </Link>
                                 <Link to={`/update/${item.id}`}>
                                 <button className="btn btn-view"><FaPencilAlt/></button>
-                                </Link>
+                                 </Link>
                             </td>
                         </tr>
                        
